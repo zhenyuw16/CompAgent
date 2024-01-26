@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Animate124: Animating One Image to 4D Dynamic Scene.">
+  <meta name="keywords" content="3D Generation, AIGC, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animate124: Animating One Image to 4D Dynamic Scene</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <!-- <link rel="stylesheet" href="./static/css/style.css"> -->
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+  <link rel="icon" href="./assets/images/panda-dance.jpg"> 
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Shantell+Sans" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Animate124: Animating One Image to 4D Dynamic Scene</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yuyangzhao.com">Yuyang Zhao</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://jokeryan.github.io/about/">Zhiwen Yan</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://xieenze.github.io/">Enze Xie</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com.sg/citations?user=2p7x6OUAAAAJ&hl=en">Lanqing Hong</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com.sg/citations?user=XboZC1AAAAAJ&hl=en">Zhenguo Li</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.comp.nus.edu.sg/~leegh/">Gim Hee Lee</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1 </sup>National University of Singapore,</span>
+            <span class="author-block"><sup>2 </sup>Huawei Noah's Ark Lab</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2311.14603"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2311.14603"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=L_1HCBhz9MM"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/HeliosZhao/Animate124"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <!-- Repeat the following structure for each row -->
+    
+    <!-- Row 1 -->
+    <div class="columns is-vcentered is-centered">
+      <!-- Set 1 -->
+      <div class="column">
+        <div class="columns is-vcentered is-centered">
+          <div class="column is-narrow has-text-centered">
+            <img src="assets/images/panda-dance.jpg" width="256" height="256">
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <span class="icon is-large">
+              <i class="fas fa-arrow-right fa-2x"></i>
+            </span>
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <video preload="none" class="video" id="videopanda" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/panda-dance-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+            <canvas height="256" class="videoMerge" id="videopandaMerge" width="256"></canvas>
+          </div>
+        </div>
+        <div class="has-text-centered">
+          <p class="caption">A panda is dancing</p>
+        </div>
+      </div>
+
+      <!-- Set 2 -->
+      <div class="column">
+        <div class="columns is-vcentered is-centered">
+          <div class="column is-narrow has-text-centered">
+            <img src="assets/images/fish.jpg" width="256" height="256">
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <span class="icon is-large">
+              <i class="fas fa-arrow-right fa-2x"></i>
+            </span>
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <video preload="none" class="video" id="videofish" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/fish-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+            <canvas height="256" class="videoMerge" id="videofishMerge" width="256"></canvas>
+          </div>
+        </div>
+        <div class="has-text-centered">
+          <p class="caption">A Clownfish is swimming</p>
+        </div>
+      </div>
+    </div>
+
+        
+    <!-- Row 2 -->
+    <div class="columns is-vcentered is-centered">
+      <!-- Set 1 -->
+      <div class="column">
+        <div class="columns is-vcentered is-centered">
+          <div class="column is-narrow has-text-centered">
+            <img src="assets/images/flag-chelsea.jpg" width="256" height="256">
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <span class="icon is-large">
+              <i class="fas fa-arrow-right fa-2x"></i>
+            </span>
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <video preload="none" class="video" id="videoflag" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/flag-chelsea-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+            <canvas height="256" class="videoMerge" id="videoflagMerge" width="256"></canvas>
+          </div>
+        </div>
+        <div class="has-text-centered">
+          <p class="caption">A blue flag with Chelsea Football Club logo on it, attached to a flagpole, <br> waving with a smooth, gentle curve</p>
+        </div>
+      </div>
+
+      <!-- Set 2 -->
+      <div class="column">
+        <div class="columns is-vcentered is-centered">
+          <div class="column is-narrow has-text-centered">
+            <img src="assets/images/fox-game.jpg" width="256" height="256">
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <span class="icon is-large">
+              <i class="fas fa-arrow-right fa-2x"></i>
+            </span>
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <video preload="none" class="video" id="videofoxgame" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/fox-game3-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+            <canvas height="256" class="videoMerge" id="videofoxgameMerge" width="256"></canvas>
+          </div>
+        </div>
+        <div class="has-text-centered">
+          <p class="caption">A fox maneuvering a game controller with its paws</p>
+        </div>
+      </div>
+    </div>
+
+            
+    <!-- Row 3 -->
+    <div class="columns is-vcentered is-centered">
+      <!-- Set 1 -->
+      <div class="column">
+        <div class="columns is-vcentered is-centered">
+          <div class="column is-narrow has-text-centered">
+            <img src="assets/images/astronaut-horse.png" width="256" height="256">
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <span class="icon is-large">
+              <i class="fas fa-arrow-right fa-2x"></i>
+            </span>
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <video preload="none" class="video" id="videoast" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/astronaut-horse-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+            <canvas height="256" class="videoMerge" id="videoastMerge" width="256"></canvas>
+          </div>
+        </div>
+        <div class="has-text-centered">
+          <p class="caption">An astronaut, helmet in hand, rides a white horse</p>
+        </div>
+      </div>
+
+      <!-- Set 2 -->
+      <div class="column">
+        <div class="columns is-vcentered is-centered">
+          <div class="column is-narrow has-text-centered">
+            <img src="assets/images/monkey-bike.jpg" width="256" height="256">
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <span class="icon is-large">
+              <i class="fas fa-arrow-right fa-2x"></i>
+            </span>
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <video preload="none" class="video" id="videomonkey" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/monkey-bike2-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+            <canvas height="256" class="videoMerge" id="videomonkeyMerge" width="256"></canvas>
+          </div>
+        </div>
+        <div class="has-text-centered">
+          <p class="caption">A monkey riding a bike</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="columns is-vcentered is-centered">
+      <!-- Set 1 -->
+      <div class="column">
+        <div class="columns is-vcentered is-centered">
+          <div class="column is-narrow has-text-centered">
+            <img src="assets/images/space-shuttle.jpg" width="256" height="256">
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <span class="icon is-large">
+              <i class="fas fa-arrow-right fa-2x"></i>
+            </span>
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <video preload="none" class="video" id="videospace" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/space-shuttle-seed1234-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+            <canvas height="256" class="videoMerge" id="videospaceMerge" width="256"></canvas>
+          </div>
+        </div>
+        <div class="has-text-centered">
+          <p class="caption">A space shuttle launching</p>
+        </div>
+      </div>
+
+      <!-- Set 2 -->
+      <div class="column">
+        <div class="columns is-vcentered is-centered">
+          <div class="column is-narrow has-text-centered">
+            <img src="assets/images/tiger-guitar.jpg" width="256" height="256">
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <span class="icon is-large">
+              <i class="fas fa-arrow-right fa-2x"></i>
+            </span>
+          </div>
+          <div class="column is-narrow has-text-centered">
+            <video preload="none" class="video" id="videotiger" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/tiger-guitar-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+            <canvas height="256" class="videoMerge" id="videotigerMerge" width="256"></canvas>
+          </div>
+        </div>
+        <div class="has-text-centered">
+          <p class="caption">A full-bodied tiger standing on its hind legs, confidently playing an acoustic guitar</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Rows 2, 3, 4... -->
+    <!-- Repeat the above row structure for each additional row, ensuring to update the image paths, video paths, and captions accordingly -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+        <div class="column">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          We introduce Animate124 (<strong>Animate</strong>-<strong>one</strong>-image-<strong>to</strong>-<strong>4</strong>D), the first work to animate a single in-the-wild image into 3D video through textual motion descriptions, an underexplored problem with significant applications. Our 4D generation leverages an advanced 4D grid dynamic Neural Radiance Field (NeRF) model, optimized in three distinct stages using multiple diffusion priors. Initially, a static model is optimized using the reference image, guided by 2D and 3D diffusion priors, which serves as the initialization for the dynamic NeRF. Subsequently, a video diffusion model is employed to learn the motion specific to the subject. However, the object in the 3D videos tends to drift away from the reference image over time. This drift is mainly due to the misalignment between the text prompt and the reference image in the video diffusion model. In the final stage, a personalized diffusion prior is therefore utilized to address the semantic drift. As the pioneering image-text-to-4D generation framework, our method demonstrates significant advancements over existing baselines, evidenced by comprehensive quantitative and qualitative assessments.
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </section>
+<section>
+  <div class="container is-max-desktop">
+    <!-- Framework. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Framework</h2>
+        <div class="content has-text-centered">
+          <img src="assets/framework.png" width="2048">
+        </div>
+        <div class="content has-text-justified">
+          The overall framework of our Animate124. After learning the static scene (the first stage, not shown in the figure), the dynamic scene is optimized with a coarse-to-fine strategy in two stages. In the coarse stage, we optimize the dynamic NeRF with the combination of video diffusion and 3D diffusion priors. Subsequently, in the fine stage, additional ControlNet prior is introduced to refine the details and correct semantic drift. The condition of ControlNet derives from the frozen coarse stage model to reduce error accumulation.
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+<section>
+  <div class="container is-max-desktop">
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/L_1HCBhz9MM?si=f4pn2uwajrc7BmrM"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{zhao2023animate124,
+  author    = {Zhao, Yuyang and Yan, Zhiwen and Xie, Enze and Hong, Lanqing and Li, Zhenguo and Lee, Gim Hee},
+  title     = {Animate124: Animating One Image to 4D Dynamic Scene},
+  journal   = {arXiv preprint arXiv:2311.14603},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/HeliosZhao/Animate124" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website is adapted from  <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. Thanks for the great work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
