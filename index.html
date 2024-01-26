@@ -1,414 +1,384 @@
 
 <!DOCTYPE html>
+
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="description"
-        content="Animate124: Animating One Image to 4D Dynamic Scene.">
-  <meta name="keywords" content="3D Generation, AIGC, NeRF">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Animate124: Animating One Image to 4D Dynamic Scene</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    gtag('js', new Date());
+    <title>AniFaceGAN</title>
 
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+    <link rel="stylesheet" href="./files/bootstrap.min.css">
+    <link rel="stylesheet" href="./files/font-awesome.min.css">
+    <link rel="stylesheet" href="./files/codemirror.min.css">
+    <link rel="stylesheet" href="./files/app.css">
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <!-- <link rel="stylesheet" href="./static/css/style.css"> -->
-  <link rel="stylesheet" href="./static/css/index.css">
-  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
-  <link rel="icon" href="./assets/images/panda-dance.jpg"> 
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Shantell+Sans" rel="stylesheet">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-  <script src="./static/js/video_comparison.js"></script>
+
+
 </head>
+
 <body>
-
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Animate124: Animating One Image to 4D Dynamic Scene</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://yuyangzhao.com">Yuyang Zhao</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://jokeryan.github.io/about/">Zhiwen Yan</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://xieenze.github.io/">Enze Xie</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://scholar.google.com.sg/citations?user=2p7x6OUAAAAJ&hl=en">Lanqing Hong</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://scholar.google.com.sg/citations?user=XboZC1AAAAAJ&hl=en">Zhenguo Li</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.comp.nus.edu.sg/~leegh/">Gim Hee Lee</a><sup>1</sup>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1 </sup>National University of Singapore,</span>
-            <span class="author-block"><sup>2 </sup>Huawei Noah's Ark Lab</span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/2311.14603"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2311.14603"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=L_1HCBhz9MM"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/HeliosZhao/Animate124"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-
+    <div class="container" id="main">
+        <div class="row">
+            <h1 class="col-md-20 text-center">
+                <br></br>
+                <b>AniFaceGAN</b>: Animatable 3D-Aware Face Image Generation <br> for Video Avatars <br>
+                <small>
+                    NeurIPS 2022 (Spotlight)
+                </small>
+            </h1>
+            <hr style="margin-top:0px">
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+					<li>
+                        <a href="https://yuewuhkust.github.io/" style="font-size: 16px;">
+                            Yue Wu
+                        </a>
+                        <sup>1</sup>
+                    </li>
+                    <li>
+                        <a href="https://yudeng.github.io/" style="font-size: 16px;">
+                            Yu Deng
+                        </a>
+                        <sup>2</sup>
+                    </li>
+					          <li>
+                        <a href="https://jlyang.org/" style="font-size: 16px;">
+                            Jiaolong Yang
+                        </a>
+                        <sup>3</sup>
+                    </li>
+                    <li>
+                        <a href="https://scholar.google.com/citations?user=-ncz2s8AAAAJ&hl=en" style="font-size: 16px;">
+                            Fangyun Wei
+                        </a>
+                        <sup>3</sup>
+                    </li>
+                    <li>
+                        <a href="https://cqf.io/" style="font-size: 16px;">
+                            Qifeng Chen
+                        </a>
+                        <sup>1</sup>
+                    </li>
+                    <li>
+                        <a href="http://www.xtong.info/" style="font-size: 16px;">
+                            Xin Tong
+                        </a>
+                        <sup>3</sup>
+                    </li><br>
+                    <a></a><br>
+			<li>
+                        <sup>1</sup>
+                        <a href="https://hkust.edu.hk/" style="font-size: 16px;">
+                            Hong Kong University of Science and Technology
+                        </a>
+                        </li>
+			<li>
+                        <sup>2</sup>
+                        <a href="https://www.tsinghua.edu.cn/en/"
+                            style="font-size: 16px;">
+                             Tsinghua Unviersity
+                        </a>
+			<li>
+                        <sup>3</sup>
+                        <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/"
+                            style="font-size: 16px;">
+                            Microsoft Research
+                        </a>
+                    </li>
+                    <li>
+              
+                    </li>
+                </ul>
             </div>
+        </div>
+		
+		<br />
+		<div class="row">
+		<div class="col-md-12 text-center">
+<!-- 			<a href="https://arxiv.org/abs/2206.07255" target="blank"><span style="text-decoration:underline;font-size:20px">arXiv:2206.07255</span></a> -->
+		</div>
+		</div>
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a href="https://arxiv.org/pdf/2210.06465.pdf">
+                            <img src="./files/paper.png" height="60px">
+                            <h4><strong>Paper</strong></h4>
+                        </a>
+                    </li>
 
-<section class="section">
-  <div class="container">
-    <!-- Repeat the following structure for each row -->
-    
-    <!-- Row 1 -->
-    <div class="columns is-vcentered is-centered">
-      <!-- Set 1 -->
-      <div class="column">
-        <div class="columns is-vcentered is-centered">
-          <div class="column is-narrow has-text-centered">
-            <img src="assets/images/panda-dance.jpg" width="256" height="256">
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <span class="icon is-large">
-              <i class="fas fa-arrow-right fa-2x"></i>
-            </span>
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <video preload="none" class="video" id="videopanda" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/panda-dance-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-            <canvas height="256" class="videoMerge" id="videopandaMerge" width="256"></canvas>
-          </div>
-        </div>
-        <div class="has-text-centered">
-          <p class="caption">A panda is dancing</p>
-        </div>
-      </div>
+                    <li>
+                        <a href="https://arxiv.org/abs/2210.06465">
+                            <img src="./files/arxiv.png" height="60px">
+                            <h4><strong>ArXiv</strong></h4>
+                        </a>
+                    </li>
 
-      <!-- Set 2 -->
-      <div class="column">
-        <div class="columns is-vcentered is-centered">
-          <div class="column is-narrow has-text-centered">
-            <img src="assets/images/fish.jpg" width="256" height="256">
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <span class="icon is-large">
-              <i class="fas fa-arrow-right fa-2x"></i>
-            </span>
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <video preload="none" class="video" id="videofish" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/fish-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-            <canvas height="256" class="videoMerge" id="videofishMerge" width="256"></canvas>
-          </div>
+                    <li>
+                        <a href="https://github.com/YueWuHKUST/AniFaceGAN/tree/main">
+                            <img src="./files/github_icon.jpeg" height="60px">
+                            <h4><strong>Code</strong></h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="has-text-centered">
-          <p class="caption">A Clownfish is swimming</p>
+	
+        
+
+<!--         <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Video
+                </h2>
+                <hr style="margin-top:0px">
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://www.youtube.com/embed/Uqzs4uN6v8M" allowfullscreen=""
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+		
+		<div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <!--<br></br>
+                <h2>
+                    Virtual face generation with expression and viewpoint control 
+                </h2>
+                <hr style="margin-top:0px">-->
+                <p class="text-justify" style="font-size: 16px;">
+                    
+                </p>
+                <video style="width:100%;height:100%;" playsinline autoplay loop preload muted>
+                    <source src="./files/control.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
-      </div>
-    </div>
+		
+		<div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+			<!--
+                <a>
+                    <video style="width:100%;height:100%;" playsinline autoplay loop preload muted>
+                        <source src="./files/teaser.mp4" type="video/mp4">
+                    </video>
+                </a>
+			-->
+                <br></br>
+			
+                <h2>
+                    Abstract
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    Although 2D generative models have made great progress in face image generation and animation, they often suffer from undesirable artifacts such as 3D inconsistency when rendering images from different camera viewpoints. This prevents them from synthesizing video animations indistinguishable from real ones. Recently, 3D-aware GANs extend 2D GANs for explicit disentanglement of camera pose by leveraging 3D scene representations. These methods can well preserve the 3D consistency of the generated images across different views, yet they cannot achieve fine-grained control over other attributes, among which facial expression control is arguably the most useful and desirable for face animation. In this paper, we propose an animatable 3D-aware GAN for multiview consistent face animation generation. The key idea is to decompose the 3D representation of the 3D-aware GAN into a template field and a deformation field, where the former represents different identities with a canonical expression, and the latter characterizes expression variations of each identity. To achieve meaningful control over facial expressions via deformation, we propose a 3D-level imitative learning scheme between the generator and a parametric 3D face model during adversarial training of the 3D-aware GAN. This helps our method achieve high-quality animatable face image generation with strong visual 3D consistency, even though trained with only unstructured 2D images. Extensive experiments demonstrate our superior performance over prior works.
+                </p>
+            </div>
+        </div>
+		
+		<div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Method overview
+                </h2>
+                <hr style="margin-top:0px">
+                <img src="./files/Overview.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify" style="font-size: 16px;">
+                    Our proposed framework which consists of a template radiance field and an expression-driven deformation field for animatable 3D-aware face image generation.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Virtual talking faces driven by real videos
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    
+                </p>
+                <video style="width:100%;height:100%;" playsinline autoplay loop preload controls muted>
+                    <source src="./files/talkingface_1.mp4" type="video/mp4">
+                </video>
+                
+                <!--<hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                </p>
+                <video style="width:100%;height:100%;" playsinline controls muted>
+                    <source src="./files/talkingface_2.mp4" type="video/mp4">
+                </video>-->
+				
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                </p>
+                <video style="width:100%;height:100%;" playsinline autoplay loop preload controls muted>
+                    <source src="./files/talkingface_3.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Comparison with DiscoFaceGAN
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    
+                </p>
+                <video style="width:100%;height:100%;" playsinline autoplay loop preload controls muted>
+                    <source src="./files/compare_discofacegan.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+		
+		<div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Comparison with 2D GAN (StyleGAN) inversion and editing
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    
+                </p>
+                <video style="width:100%;height:100%;" playsinline autoplay loop preload controls muted>
+                    <source src="./files/compare_2dgan.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Real image embedding and editing
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    
+                </p>
+                <video style="width:100%;height:100%;" playsinline autoplay loop preload controls muted>
+                    <source src="./files/embedding.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+		
+		<div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Ethics and responsible AI considerations 
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    This work aims to design an animatable 3D-aware face image generation method for the application of photorealistic virtual avatars. It is not intended to create content that is used to mislead or deceive. However, like other related face image generation techniques, it could still potentially be misused for impersonating humans. We condemn any behavior to create misleading or harmful contents of real person, and are interested in applying this technology for advancing 3D- and video-based forgery detection. Currently, the images generated by this method contain visual artifacts that can be easily identified. The method is data driven, and the performance is affected by the biases in the training data. One should be careful about the data collection process and ensure unbiased distrubitions of race, gender, age, among others.
+                </p>
+            </div>
+        </div>
+	
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0">
+                <div class="text-center">
+                    <h2>
+                        Citation
+                    </h2>
+                </div>
+                <hr style="margin-top:0px">
+                <div class="form-group col-md-12 col-md-offset-0">
+                    <div class="CodeMirror cm-s-default CodeMirror-wrap" style="font-size: 16px;">
+                        <div
+                            style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 4px; ">
+                            <textarea autocorrect="off" autocapitalize="off" spellcheck="false"
+                                style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;"
+                                tabindex="0"></textarea></div>
+                        <div class="CodeMirror-vscrollbar" cm-not-content="true">
+                            <div style="min-width: 1px; height: 0px;"></div>
+                        </div>
+                        <div class="CodeMirror-hscrollbar" cm-not-content="true">
+                            <div style="height: 100%; min-height: 1px; width: 0px;"></div>
+                        </div>
+                        <div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div>
+                        <div class="CodeMirror-gutter-filler" cm-not-content="true"></div>
+                        <div class="CodeMirror-scroll" tabindex="-1">
+                            <div class="CodeMirror-sizer"
+                                style="margin-left: 0px; margin-bottom: -17px; border-right-width: 13px; min-height: 162px; padding-right: 0px; padding-bottom: 0px;">
+                                <div style="position: relative; top: 0px;">
+                                    <div class="CodeMirror-lines">
+                                        <div style="position: relative; outline: none;">
+                                            <div class="CodeMirror-measure">AخA</div>
+                                            <div class="CodeMirror-measure"></div>
+                                            <div style="position: relative; z-index: 1;"></div>
+                                            <div class="CodeMirror-cursors">
+                                                <div class="CodeMirror-cursor"
+                                                    style="left: 4px; top: 0px; height: 17.1406px;">&nbsp;</div>
+                                            </div>
+                                            <div class="CodeMirror-code" style="">
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;">@inproceedings{yue2022anifacegan,</span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  title={AniFaceGAN: Animatable 3D-Aware Face Image Generation for Video Avatars},</span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  author={Wu, Yue and Deng, Yu and Yang, Jiaolong and Wei, Fangyun and Chen Qifeng and Tong, Xin},</span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  booktitle={Advances in Neural Information Processing Systems},</span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  year={2022}</span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;">}</span></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="position: absolute; height: 13px; width: 1px; top: 280px;"></div>
+                            <div class="CodeMirror-gutters" style="display: none; height: 300px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+				<!--
+                <h2>
+                    Acknowledgements
+                </h2>
+				-->
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    The website template was adapted from <a href="https://yudeng.github.io/GRAM/">GRAM</a> and <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a>.
+                </p>
+            </div>
+        </div>
 
         
-    <!-- Row 2 -->
-    <div class="columns is-vcentered is-centered">
-      <!-- Set 1 -->
-      <div class="column">
-        <div class="columns is-vcentered is-centered">
-          <div class="column is-narrow has-text-centered">
-            <img src="assets/images/flag-chelsea.jpg" width="256" height="256">
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <span class="icon is-large">
-              <i class="fas fa-arrow-right fa-2x"></i>
-            </span>
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <video preload="none" class="video" id="videoflag" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/flag-chelsea-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-            <canvas height="256" class="videoMerge" id="videoflagMerge" width="256"></canvas>
-          </div>
-        </div>
-        <div class="has-text-centered">
-          <p class="caption">A blue flag with Chelsea Football Club logo on it, attached to a flagpole, <br> waving with a smooth, gentle curve</p>
-        </div>
-      </div>
 
-      <!-- Set 2 -->
-      <div class="column">
-        <div class="columns is-vcentered is-centered">
-          <div class="column is-narrow has-text-centered">
-            <img src="assets/images/fox-game.jpg" width="256" height="256">
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <span class="icon is-large">
-              <i class="fas fa-arrow-right fa-2x"></i>
-            </span>
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <video preload="none" class="video" id="videofoxgame" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/fox-game3-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-            <canvas height="256" class="videoMerge" id="videofoxgameMerge" width="256"></canvas>
-          </div>
-        </div>
-        <div class="has-text-centered">
-          <p class="caption">A fox maneuvering a game controller with its paws</p>
-        </div>
-      </div>
-    </div>
-
-            
-    <!-- Row 3 -->
-    <div class="columns is-vcentered is-centered">
-      <!-- Set 1 -->
-      <div class="column">
-        <div class="columns is-vcentered is-centered">
-          <div class="column is-narrow has-text-centered">
-            <img src="assets/images/astronaut-horse.png" width="256" height="256">
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <span class="icon is-large">
-              <i class="fas fa-arrow-right fa-2x"></i>
-            </span>
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <video preload="none" class="video" id="videoast" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/astronaut-horse-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-            <canvas height="256" class="videoMerge" id="videoastMerge" width="256"></canvas>
-          </div>
-        </div>
-        <div class="has-text-centered">
-          <p class="caption">An astronaut, helmet in hand, rides a white horse</p>
-        </div>
-      </div>
-
-      <!-- Set 2 -->
-      <div class="column">
-        <div class="columns is-vcentered is-centered">
-          <div class="column is-narrow has-text-centered">
-            <img src="assets/images/monkey-bike.jpg" width="256" height="256">
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <span class="icon is-large">
-              <i class="fas fa-arrow-right fa-2x"></i>
-            </span>
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <video preload="none" class="video" id="videomonkey" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/monkey-bike2-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-            <canvas height="256" class="videoMerge" id="videomonkeyMerge" width="256"></canvas>
-          </div>
-        </div>
-        <div class="has-text-centered">
-          <p class="caption">A monkey riding a bike</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 4 -->
-    <div class="columns is-vcentered is-centered">
-      <!-- Set 1 -->
-      <div class="column">
-        <div class="columns is-vcentered is-centered">
-          <div class="column is-narrow has-text-centered">
-            <img src="assets/images/space-shuttle.jpg" width="256" height="256">
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <span class="icon is-large">
-              <i class="fas fa-arrow-right fa-2x"></i>
-            </span>
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <video preload="none" class="video" id="videospace" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/space-shuttle-seed1234-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-            <canvas height="256" class="videoMerge" id="videospaceMerge" width="256"></canvas>
-          </div>
-        </div>
-        <div class="has-text-centered">
-          <p class="caption">A space shuttle launching</p>
-        </div>
-      </div>
-
-      <!-- Set 2 -->
-      <div class="column">
-        <div class="columns is-vcentered is-centered">
-          <div class="column is-narrow has-text-centered">
-            <img src="assets/images/tiger-guitar.jpg" width="256" height="256">
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <span class="icon is-large">
-              <i class="fas fa-arrow-right fa-2x"></i>
-            </span>
-          </div>
-          <div class="column is-narrow has-text-centered">
-            <video preload="none" class="video" id="videotiger" loop="" autoplay="" muted="" playsinline="" src="./assets/videos/tiger-guitar-100.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-            <canvas height="256" class="videoMerge" id="videotigerMerge" width="256"></canvas>
-          </div>
-        </div>
-        <div class="has-text-centered">
-          <p class="caption">A full-bodied tiger standing on its hind legs, confidently playing an acoustic guitar</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Rows 2, 3, 4... -->
-    <!-- Repeat the above row structure for each additional row, ensuring to update the image paths, video paths, and captions accordingly -->
-
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <!-- <div class="column is-four-fifths"> -->
-        <div class="column">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          We introduce Animate124 (<strong>Animate</strong>-<strong>one</strong>-image-<strong>to</strong>-<strong>4</strong>D), the first work to animate a single in-the-wild image into 3D video through textual motion descriptions, an underexplored problem with significant applications. Our 4D generation leverages an advanced 4D grid dynamic Neural Radiance Field (NeRF) model, optimized in three distinct stages using multiple diffusion priors. Initially, a static model is optimized using the reference image, guided by 2D and 3D diffusion priors, which serves as the initialization for the dynamic NeRF. Subsequently, a video diffusion model is employed to learn the motion specific to the subject. However, the object in the 3D videos tends to drift away from the reference image over time. This drift is mainly due to the misalignment between the text prompt and the reference image in the video diffusion model. In the final stage, a personalized diffusion prior is therefore utilized to address the semantic drift. As the pioneering image-text-to-4D generation framework, our method demonstrates significant advancements over existing baselines, evidenced by comprehensive quantitative and qualitative assessments.
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-  </section>
-<section>
-  <div class="container is-max-desktop">
-    <!-- Framework. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column">
-        <h2 class="title is-3">Framework</h2>
-        <div class="content has-text-centered">
-          <img src="assets/framework.png" width="2048">
-        </div>
-        <div class="content has-text-justified">
-          The overall framework of our Animate124. After learning the static scene (the first stage, not shown in the figure), the dynamic scene is optimized with a coarse-to-fine strategy in two stages. In the coarse stage, we optimize the dynamic NeRF with the combination of video diffusion and 3D diffusion priors. Subsequently, in the fine stage, additional ControlNet prior is introduced to refine the details and correct semantic drift. The condition of ControlNet derives from the frozen coarse stage model to reduce error accumulation.
-        </div>
-      </div>
-    </div>
-  </div>
-  </section>
-
-<section>
-  <div class="container is-max-desktop">
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/L_1HCBhz9MM?si=f4pn2uwajrc7BmrM"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-    <!--/ Paper video. -->
-  </div>
-</section>
-
-
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{zhao2023animate124,
-  author    = {Zhao, Yuyang and Yan, Zhiwen and Xie, Enze and Hong, Lanqing and Li, Zhenguo and Lee, Gim Hee},
-  title     = {Animate124: Animating One Image to 4D Dynamic Scene},
-  journal   = {arXiv preprint arXiv:2311.14603},
-  year      = {2023},
-}</code></pre>
-  </div>
-</section>
-
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/HeliosZhao/Animate124" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content has-text-centered">
-          <p>
-            This website is adapted from  <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. Thanks for the great work.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
 
 </body>
+
 </html>
+
+
