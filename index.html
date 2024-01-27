@@ -7,7 +7,7 @@
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>GRAM</title>
+    <title>CompAgent</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,10 +27,7 @@
         <div class="row">
             <h1 class="col-md-20 text-center">
                 <br></br>
-                <b>GRAM</b>: Generative Radiance Manifolds for 3D-Aware Image Generation<br>
-                <small>
-                    CVPR 2022 (Oral Presentation)
-                </small>
+                Divide and Conquer: Language Models can Plan and Self-Correct for Compositional Text-to-Image Generation<br>
             </h1>
             <hr style="margin-top:0px">
         </div>
@@ -38,47 +35,59 @@
             <div class="col-md-12 text-center">
                 <ul class="list-inline">
                     <li>
-                        <a href="https://YuDeng.github.io/" style="font-size: 16px;">
-                            Yu Deng
+                        <a href="https://scholar.google.com/citations?user=x_-kOjoAAAAJ&hl=zh-CN/" style="font-size: 16px;">
+                            Zhenyu Wang
                         </a>
                         <sup>1</sup>
                     </li>
                     <li>
-                        <a href="https://jlyang.org/" style="font-size: 16px;">
-                            Jiaolong Yang
+                        <a href="https://xieenze.github.io/" style="font-size: 16px;">
+                            Enze Xie
                         </a>
                         <sup>2</sup>
                     </li>
                     <li>
                         <a style="font-size: 16px;">
-                            Jianfeng Xiang
+                            Aoxue Li 
+                        </a>
+                        <sup>2</sup>
+                    </li>
+                    <li>
+                        <a href="https://zhongdao.github.io/" style="font-size: 16px;">
+                            Zhongdao Wang
+                        </a>
+                        <sup>2</sup>
+                    </li>
+                    <li>
+                        <a href="https://xh-liu.github.io/" style="font-size: 16px;">
+                            Xihui Liu
                         </a>
                         <sup>3</sup>
                     </li>
                     <li>
-                        <a href="http://www.xtong.info/" style="font-size: 16px;">
-                            Xin Tong
+                        <a href="https://scholar.google.com/citations?user=XboZC1AAAAAJ&hl=en/" style="font-size: 16px;">
+                            Zhenguo Li
                         </a>
                         <sup>2</sup>
-                    </li><br>
+                    </li>
+                    <br>
                     <a></a><br>
                     <li>
                         <sup>1</sup>
-                        <a href="https://www.tsinghua.edu.cn/en/" style="font-size: 16px;">
+                        <a style="font-size: 16px;">
                             Tsinghua Unviersity
                         </a>
                     </li>
                     <li>
                         <sup>2</sup>
-                        <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/"
-                            style="font-size: 16px;">
-                            Microsoft Research Asia
+                        <a style="font-size: 16px;">
+                            Noah's Ark Lab, Huawei
                         </a>
                     </li>
                     <li>
                         <sup>3</sup>
-                        <a href="http://en.ustc.edu.cn/" style="font-size: 16px;">
-                            University of Science and Technology of China
+                        <a style="font-size: 16px;">
+                            The University of Hong Kong
                         </a>
                     </li>
                 </ul>
@@ -96,13 +105,13 @@
                         </a>
                     </li>
 
-                    <li>
-<!--                         <a onClick="alert('Code coming soon!\nContact dengyu2008@hotmail.com for more details.')"> -->
-                        <a href="https://github.com/microsoft/GRAM">
+ <!--                      <li>
+                       <a onClick="alert('Code coming soon!\nContact dengyu2008@hotmail.com for more details.')"> 
+                       <a href="https://github.com/microsoft/GRAM">
                             <img src="./files/github.png" height="60px">
                             <h4><strong>Code</strong></h4>
                         </a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </div>
@@ -111,7 +120,7 @@
             <div class="col-md-12 col-md-offset-0 text-center">
                 <a>
                     <video style="width:100%;height:100%;" playsinline autoplay loop preload muted>
-                        <source src="./files/teaser.mp4" type="video/mp4">
+                        <source src="./files/demo_short.mp4" type="video/mp4">
                     </video>
                 </a>
                 <br></br>
@@ -120,27 +129,8 @@
                 </h2>
                 <hr style="margin-top:0px">
                 <p class="text-justify" style="font-size: 16px;">
-                    3D-aware image generative modeling aims to generate
-                    3D-consistent images with explicitly controllable camera
-                    poses. Recent works have shown promising results by training
-                    neural radiance field (NeRF) generators on unstructured
-                    2D image collections, but they still can not generate
-                    highly-realistic images with fine details. A critical reason
-                    is that the high memory and computation cost of volumetric
-                    representation learning greatly restricts the number of point
-                    samples for radiance integration during training. Deficient
-                    point sampling not only limits the expressive power of the
-                    generator to handle high-frequency details but also impedes
-                    effective GAN training due to the noise caused by unstable
-                    Monte Carlo sampling. We propose a novel approach that
-                    regulates point sampling and radiance field learning on 2D
-                    manifolds, embodied as a set of implicit surfaces in the 3D
-                    volume learned with GAN training. For each viewing ray,
-                    we calculate the ray-surface intersections and accumulate
-                    their radiance predicted by the network. We show that by
-                    training and rendering such radiance manifolds, our generator
-                    can produce high quality images with realistic fine
-                    details and strong visual 3D consistency.
+                    Despite significant advancements in text-to-image models for generating high-quality images, these methods still struggle to ensure the controllability of text prompts over images in the context of complex text prompts, especially when it comes to retaining object attributes and relationships. In this paper, we propose CompAgent, a training-free approach for compositional text-to-image generation, with a large language model (LLM) agent as its core. The fundamental idea underlying CompAgent is premised on a divide-and-conquer methodology. Given a complex text prompt containing multiple concepts including objects, attributes, and relationships, the LLM agent initially decomposes it, which entails the extraction of individual objects, their associated attributes, and the prediction of a coherent scene layout. These individual objects can then be independently conquered. Subsequently, the agent performs reasoning by analyzing the text, plans and employs the tools to compose these isolated objects. The verification and human feedback mechanism is finally incorporated into our agent to further correct the potential attribute errors and refine the generated images. Guided by the LLM agent, we propose a tuning-free multi-concept customization model and a layout-to-image generation model as the tools for concept composition, and a local image editing method as the tool to interact with the agent for verification. The scene layout controls the image generation process among these tools to prevent confusion among multiple objects. 
+                    Extensive experiments demonstrate the superiority of our approach for compositional text-to-image generation: CompAgent achieves more than 10\% improvement on T2I-CompBench, a comprehensive benchmark for open-world compositional T2I generation. The extension to various related tasks also illustrates the flexibility of our CompAgent for potential applications.
                 </p>
             </div>
         </div>
@@ -154,7 +144,7 @@
                 <hr style="margin-top:0px">
                 <div class="text-center">
                     <div style="position:relative;padding-top:56.25%;">
-                        <iframe src="https://www.youtube.com/embed/hBJWZwl_JCI" allowfullscreen=""
+                        <iframe src="https://www.youtube.com/embed/3nukF4M4Zx8" allowfullscreen=""
                             style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
                     </div>
                 </div>
@@ -168,14 +158,9 @@
                     Overview
                 </h2>
                 <hr style="margin-top:0px">
-                <img src="./files/framework.png" class="img-responsive" alt="overview"><br>
+                <img src="./files/framework.jpeg" class="img-responsive" alt="overview"><br>
                 <p class="text-justify" style="font-size: 16px;">
-                    Overview of the GRAM method. The generator G consists of a manifold predictor M and a radiance
-                    generator Φ. M predicts
-                    multiple isosurfaces which define the input domain of Φ. The intersections between camera rays and
-                    the isosurfaces are
-                    sent to Φ for color and occupancy prediction. Images are then generated by compositing the color of
-                    the points along the ray.
+                    Overview of CompAgent: Given the input containing the complex text prompt, the LLM agent conducts the decomposition and planning tasks to invoke external tools for image generation. It then performs verification or involves human feedback and interacts with the tools for image self-correction. The final image output will well satisfy the requirements from the input text prompt.
                 </p>
             </div>
         </div>
@@ -190,26 +175,41 @@
                 </h2>
                 <hr style="margin-top:0px">
                 <p class="text-justify" style="font-size: 16px;">
-                    GRAM is able to generate high-quality images with fine details. Moreover, it allows an explicit
-                    control of camera viewpoint and achieves highly consistent results across different views.
-                    It even maintains strong visual 3D consistency for very thin structures such as bangs of hair,
-                    eyeglass, and whiskers of cat.
+                    CompAgent is able to generate accurate images given complex text prompts. For compositional-text-to-image generation, it well addresses the attribute binding and object relationship problems.
+                    Compared with existing methods, CompAgent generates images that better align with the description of complex text prompts.
                 </p>
-                <video style="width:100%;height:100%;" playsinline autoplay loop preload muted>
+                <!-- <video style="width:100%;height:100%;" playsinline autoplay loop preload muted>
                     <source src="./files/result.mp4" type="video/mp4">
-                </video>
+                </video> -->
+                <div class="col-md-12 col-md-offset-1 text-center">
+                    <img src="./files/comparison2.png" class="img-responsive" alt="overview"><br>
+                </div>
                 <hr style="margin-top:0px">
                 <p class="text-justify" style="font-size: 16px;">
-                    GRAM achieves the best visual quality with realistic details and remarkable 3D consistency on
-                    multiple datasets comparing with previous 3D-aware image generation methods.
+                    CompAgent generates accurately for attribute binding:
                 </p>
-                <video style="width:100%;height:100%;" playsinline autoplay loop preload muted>
+                <!-- <video style="width:100%;height:100%;" playsinline autoplay loop preload muted>
                     <source src="./files/compare.mp4" type="video/mp4">
-                </video>
+                </video> -->
+                <div class="col-md-15 col-md-offset-1 text-center">
+                    <img src="./files/rcolor.png" class="img-responsive" alt="overview"><br>
+                </div>
+                <p class="text-justify" style="font-size: 16px;">
+                    for object relationship:
+                </p>
+                <div class="col-md-15 col-md-offset-1 text-center">
+                    <img src="./files/rrelation.png" class="img-responsive" alt="overview"><br>
+                </div>
+                <p class="text-justify" style="font-size: 16px;">
+                    for complex compositions:
+                </p>
+                <div class="col-md-15 col-md-offset-1 text-center">
+                    <img src="./files/rcomplex.png" class="img-responsive" alt="overview"><br>
+                </div>
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-12 col-md-offset-0 text-center">
                 <br></br>
                 <h2>
@@ -245,7 +245,7 @@
                     <source src="./files/shape.mp4" type="video/mp4">
                 </video>
             </div>
-        </div>
+        </div> -->
 
 <!--         <div class="row">
             <div class="col-md-12 col-md-offset-0 text-center">
@@ -263,7 +263,7 @@
             </div>
         </div> -->
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-12 col-md-offset-0 text-center">
                 <br></br>
                 <h2>
@@ -296,7 +296,7 @@
                     Per concerns about misuse of this method, the code is available for use under a <a href="https://github.com/microsoft/GRAM/blob/main/GRAM-Microsoft%20Research%20License%20Agreement.pdf">research-only license</a>. 
                 </p>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
@@ -336,15 +336,15 @@
                                             </div>
                                             <div class="CodeMirror-code" style="">
                                                 <pre
-                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;">@inproceedings{deng2022gram,</span></pre>
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;">@article{wang2024div,</span></pre>
                                                 <pre
-                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  title={GRAM: Generative Radiance Manifolds for 3D-Aware Image Generation},</span></pre>
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  title={Divide and Conquer: Language Models can Plan and Self-Correct for Compositional Text-to-Image Generation},</span></pre>
                                                 <pre
-                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  author={Deng, Yu and Yang, Jiaolong and Xiang, Jianfeng and Tong, Xin},</span></pre>
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  author={Zhenyu, Wang and Enze, Xie and Aoxue, Li and Zhongdao, Wang and Xihui, Liu and Zhenguo, Li},</span></pre>
                                                 <pre
-                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition},</span></pre>
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  journal={***},</span></pre>
                                                 <pre
-                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  year={2022}</span></pre>
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  year={2024}</span></pre>
                                                 <pre
                                                     class=" CodeMirror-line "><span style="padding-right: 0.1px;">}</span></pre>
                                             </div>
@@ -360,7 +360,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-12 col-md-offset-0 text-center">
                 <br></br>
                 <h2>
@@ -372,7 +372,7 @@
                     The website template was adapted from <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a>.
                 </p>
             </div>
-        </div>
+        </div> -->
 
 
 </body>
