@@ -1,4 +1,2 @@
-# GRAM
-Project page of "GRAM: Generative Radiance Manifolds for 3D-Aware Image Generation"
+# CompAgent
 
-Code available now at [https://github.com/microsoft/GRAM](https://github.com/microsoft/GRAM).
